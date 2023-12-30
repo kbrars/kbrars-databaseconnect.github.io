@@ -29,8 +29,6 @@
                </div>
           </form>
        </div>
-
-
          <?php 
        include 'connect.php';
             //gonder tuşuna basılmışsa
@@ -48,8 +46,7 @@
                 }   
                 //tüm alanlar doldurulmuş ise
                 else
-                {     
-             
+                {                
                     //veritabanına ekleme              
                    $sql = "INSERT INTO uyeler (isim, soyisim, telefon)
                    VALUES ('$isim', '$soyisim', '$tel');"; 
@@ -64,16 +61,11 @@
             }
 
             // veri tabanından çekme
-
             $secme = "SELECT id, isim, soyisim,telefon FROM uyeler";
             $dizi = $baglanti->query($secme);
             if ($dizi->num_rows > 0) 
-            {
-                
-              ?>
-           
-              
-               
+            {                
+              ?>                           
               <div class="container mt-5">
                     <table class="table table-striped table-hover">
                         <thead class="bg-dark">
@@ -82,18 +74,14 @@
                               <td>İsim</td>
                               <td>Soyisim</td>
                               <td>Telefon</td>
-                              <td>Sil</td>
-                              
+                              <td>Sil</td>                             
                             </tr>
                         </thead>
                         <tbody>
-
                                     <?php
                                        while($row = $dizi->fetch_assoc()) 
                                        {
-                                           $ID=$row['id'];
-                                          
-                                        
+                                           $ID=$row['id'];                                       
                                     ?>
                             <tr>
                                <td> <?php echo $row['id']; ?> </td>
@@ -102,42 +90,19 @@
                                <td> <?php echo $row['telefon'];?></td>
                               
                                <td> <a href="sil.php?urunsil&id=<?php echo $ID?>"><button name="sil" type="button" class="btn btn-danger">Sil</button></a></td>
-                               
-
-                               </form> 
+                             </form> 
                            </tr>
                                     <?php
                                      }
                                     ?>
-  
-
-
                         </tbody>
-
-
                     </table>
             </div>
-
-              
-
-            <?php
-
-            
+            <?php            
 } else {
-
 }
-
-     
-       
-       
         ?>
-
         <?php
-        
-
         ?>
-
     </body>
 </html>
-
-
